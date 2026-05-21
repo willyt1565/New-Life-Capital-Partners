@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+._*
+
+# Editor / OS noise
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Working / intake files — not part of the published site
+project-info-intake.md
+
+# Custom domain — kept out of the repo until DNS is ready.
+# When connecting newlifecapitalpartners.com, set it in GitHub Settings -> Pages
+# (GitHub creates its own CNAME file), or remove this line and push.
+CNAME

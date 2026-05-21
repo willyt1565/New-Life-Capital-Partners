@@ -1,0 +1,744 @@
+/* ============================================================
+   NEW LIFE CAPITAL PARTNERS
+   "Refined Dark Luxury" — global stylesheet
+   Shared across every page of the site.
+   ============================================================ */
+
+/* ---------- 1. Design tokens ------------------------------- */
+:root {
+  /* Color palette */
+  --bg:            #0D0F12;   /* deep charcoal / near-black */
+  --bg-navy:       #111827;   /* dark navy secondary */
+  --gold:          #C9A96E;   /* warm gold / champagne accent */
+  --ivory:         #F2EDE4;   /* off-white / ivory accent */
+  --text:          #EAEAEA;   /* primary soft white text */
+  --muted:         #8A8F9E;   /* medium gray muted text */
+  --border:        #1F2533;   /* subtle dark dividers */
+
+  --gold-soft:     rgba(201, 169, 110, 0.14);
+  --gold-glow:     rgba(201, 169, 110, 0.30);
+
+  /* Typography */
+  --font-display:  'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', 'Sora', system-ui, -apple-system, sans-serif;
+  --font-label:    'Cinzel', 'Josefin Sans', serif;
+
+  /* Spacing rhythm */
+  --section-pad:   clamp(4.5rem, 9vw, 9rem);
+  --gutter:        clamp(1.5rem, 5vw, 6rem);
+  --maxw:          1320px;
+
+  /* Motion */
+  --ease:          cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- 2. Reset / base -------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* Subtle grain / noise texture overlaid on the whole page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 3. Typography ---------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: var(--text);
+}
+
+h1 { font-size: clamp(2.7rem, 6.4vw, 5.4rem); }
+h2 { font-size: clamp(2.1rem, 4.2vw, 3.5rem); }
+h3 { font-size: clamp(1.45rem, 2.4vw, 2rem); }
+
+p { color: var(--muted); }
+strong { color: var(--text); font-weight: 500; }
+
+/* Small-caps accent label */
+.label {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  color: var(--text);
+  font-weight: 300;
+}
+
+/* ---------- 4. Layout helpers ------------------------------ */
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--section-pad); }
+
+/* Thin gold horizontal rule used as a section divider */
+.rule {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--border) 12%, var(--border) 88%, transparent);
+}
+.rule--gold {
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  opacity: 0.5;
+}
+.rule--short { width: 64px; height: 1px; background: var(--gold); opacity: 0.8; }
+
+.section-head { max-width: 640px; }
+.section-head .label { display: block; margin-bottom: 1.2rem; }
+.section-head h2 { margin-bottom: 0.4rem; }
+
+/* ---------- 5. Buttons ------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 1.05rem 2.1rem;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  transition: all 0.4s var(--ease);
+  white-space: nowrap;
+}
+
+/* Primary — solid gold fill */
+.btn--primary {
+  background: var(--gold);
+  color: #0D0F12;
+}
+.btn--primary:hover {
+  background: #d8bd87;
+  border-color: #d8bd87;
+  transform: translateY(-2px);
+}
+
+/* Secondary — outlined, transparent fill */
+.btn--outline {
+  background: transparent;
+  color: var(--gold);
+}
+.btn--outline:hover {
+  background: var(--gold-soft);
+  transform: translateY(-2px);
+}
+
+/* Ghost — text link with gold underline reveal */
+.btn--ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s var(--ease), gap 0.35s var(--ease);
+}
+.btn--ghost:hover { border-color: var(--gold); gap: 0.85rem; }
+.btn--ghost .arrow { transition: transform 0.35s var(--ease); }
+.btn--ghost:hover .arrow { transform: translateX(3px); }
+
+/* ---------- 6. Navigation ---------------------------------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem var(--gutter);
+  transition: background 0.4s var(--ease), padding 0.4s var(--ease),
+              border-color 0.4s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(13, 15, 18, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding-block: 1rem;
+  border-bottom-color: var(--border);
+}
+
+.nav__brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.nav__brand .mark {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ivory);
+}
+.nav__brand .sub {
+  font-family: var(--font-label);
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 5px;
+}
+/* Brand logo image — replaces the typographic wordmark in the nav */
+.nav__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  transition: height 0.4s var(--ease);
+}
+.nav.scrolled .nav__logo { height: 36px; }
+.nav__brand-fallback { display: flex; flex-direction: column; line-height: 1; }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2.3rem;
+}
+.nav__links a:not(.btn) {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.3s var(--ease);
+}
+.nav__links a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.35s var(--ease);
+}
+.nav__links a:not(.btn):hover { color: var(--gold); }
+.nav__links a:not(.btn):hover::after { width: 100%; }
+.nav__links .btn { padding: 0.7rem 1.5rem; }
+
+.nav__toggle {
+  display: none;
+  background: none;
+  border: 0;
+  width: 32px; height: 24px;
+  position: relative;
+}
+.nav__toggle span {
+  position: absolute;
+  left: 0;
+  width: 100%; height: 1.5px;
+  background: var(--text);
+  transition: transform 0.35s var(--ease), opacity 0.25s var(--ease);
+}
+.nav__toggle span:nth-child(1) { top: 2px; }
+.nav__toggle span:nth-child(2) { top: 11px; }
+.nav__toggle span:nth-child(3) { top: 20px; }
+.nav__toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.nav__toggle.open span:nth-child(2) { opacity: 0; }
+.nav__toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* ---------- 7. Hero ---------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* PLACEHOLDER: swap for assets/photography/hero.jpg
+     e.g.  background-image: url('assets/photography/hero.jpg'); */
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(201,169,110,0.10), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(17,24,39,0.9), transparent 60%),
+    linear-gradient(160deg, #15181f 0%, #0D0F12 60%);
+  background-size: cover;
+  background-position: center;
+}
+.hero__bg::after {
+  /* dark overlay so any future photo keeps text legible */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,15,18,0.55) 0%, rgba(13,15,18,0.82) 100%);
+}
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 940px;
+  padding: 8rem var(--gutter) 6rem;
+}
+.hero__content .label { display: block; margin-bottom: 2rem; }
+.hero h1 { margin-bottom: 1.8rem; }
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero__sub {
+  max-width: 620px;
+  margin: 0 auto 2.8rem;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+}
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero__scroll {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-label);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+.hero__scroll .line {
+  width: 1px; height: 46px;
+  background: linear-gradient(var(--gold), transparent);
+  animation: scrollpulse 2.4s var(--ease) infinite;
+}
+@keyframes scrollpulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50%      { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+}
+
+/* ---------- 8. Companies (the ecosystem) ------------------- */
+.companies { background: var(--bg-navy); }
+.companies__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+.company-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: clamp(2.2rem, 4vw, 3.6rem);
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  transition: transform 0.45s var(--ease), border-color 0.45s var(--ease),
+              box-shadow 0.45s var(--ease);
+}
+.company-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 60px -28px var(--gold-glow);
+}
+.company-card__logo {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 0.3rem;
+}
+.company-card__logo .accent { color: var(--gold); }
+.company-card__type {
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.company-card__desc {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-style: italic;
+  color: var(--text);
+  margin: 2rem 0 1.5rem;
+  line-height: 1.4;
+}
+.company-card__list {
+  margin-bottom: 2.4rem;
+}
+.company-card__list li {
+  font-size: 0.92rem;
+  color: var(--muted);
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  position: relative;
+  border-top: 1px solid var(--border);
+}
+.company-card__list li:first-child { border-top: 0; }
+.company-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 1.15rem;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+.company-card__foot { margin-top: auto; }
+
+/* placeholder logo chip shown until a real logo file is added */
+.placeholder-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  padding: 3px 8px;
+  margin-top: 0.7rem;
+}
+
+/* ---------- 9. Who we are ---------------------------------- */
+.who__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+.who__statement .label { display: block; margin-bottom: 1.6rem; }
+.who__statement h2 {
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
+}
+.who__statement h2 em { font-style: italic; color: var(--gold); }
+.who__body p { margin-bottom: 1.3rem; }
+.who__body .btn--ghost { margin-top: 0.8rem; }
+.who__figure {
+  /* PLACEHOLDER: swap for assets/photography/who-we-are.jpg */
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(201,169,110,0.12), transparent 55%),
+    linear-gradient(155deg, #161a22, #0D0F12);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.6rem;
+}
+.who__figure span {
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- 10. What we do (3 pillars) --------------------- */
+.pillars { background: var(--bg-navy); }
+.pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 3.5rem;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.pillar {
+  background: var(--bg-navy);
+  padding: clamp(2rem, 3.5vw, 3.2rem);
+  transition: background 0.4s var(--ease);
+}
+.pillar:hover { background: var(--bg); }
+.pillar__icon {
+  width: 46px; height: 46px;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+}
+.pillar__icon svg { width: 100%; height: 100%; }
+.pillar h3 { margin-bottom: 0.7rem; }
+.pillar__num {
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 1.4rem;
+}
+.pillar p { font-size: 0.95rem; }
+
+/* ---------- 11. Insights ----------------------------------- */
+.insights__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.insights__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+.article-card {
+  border: 1px solid var(--border);
+  background: var(--bg-navy);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.45s var(--ease), border-color 0.45s var(--ease),
+              box-shadow 0.45s var(--ease);
+}
+.article-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 60px -30px var(--gold-glow);
+}
+.article-card__img {
+  aspect-ratio: 16 / 10;
+  background:
+    radial-gradient(ellipse at 60% 30%, rgba(201,169,110,0.10), transparent 60%),
+    linear-gradient(150deg, #181c25, #0D0F12);
+  border-bottom: 1px solid var(--border);
+}
+.article-card__body {
+  padding: 1.8rem 1.7rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.article-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.1rem;
+}
+.tag {
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-soft);
+  background: var(--gold-soft);
+  padding: 4px 9px;
+}
+.article-card__meta .dot { color: var(--border); }
+.article-card__meta .readtime {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.article-card h3 {
+  font-size: 1.32rem;
+  margin-bottom: 0.7rem;
+}
+.article-card__excerpt { font-size: 0.92rem; margin-bottom: 1.6rem; }
+.article-card__foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.article-card__foot .author { color: var(--text); }
+
+/* ---------- 12. Footer CTA strip --------------------------- */
+.cta-strip {
+  position: relative;
+  background:
+    linear-gradient(120deg, rgba(201,169,110,0.12), transparent 55%),
+    var(--bg-navy);
+  border-block: 1px solid var(--border);
+  text-align: center;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+.cta-strip h2 {
+  font-style: italic;
+  margin-bottom: 0.6rem;
+}
+.cta-strip p { margin-bottom: 2.6rem; }
+.cta-strip__btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- 13. Footer ------------------------------------- */
+.footer {
+  background: var(--bg);
+  padding-block: clamp(3.5rem, 6vw, 5.5rem) 2.5rem;
+}
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
+.footer__brand .mark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--ivory);
+}
+.footer__brand .sub {
+  font-family: var(--font-label);
+  font-size: 0.55rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 6px 0 1.4rem;
+}
+/* Brand logo image — replaces the typographic wordmark in the footer */
+.footer__logo {
+  height: 60px;
+  width: auto;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.footer__brand-fallback { display: flex; flex-direction: column; line-height: 1; }
+.footer__brand p { font-size: 0.9rem; max-width: 320px; }
+.footer__col h4 {
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.3rem;
+}
+.footer__col a {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding: 0.4rem 0;
+  transition: color 0.3s var(--ease), padding-left 0.3s var(--ease);
+}
+.footer__col a:hover { color: var(--gold); padding-left: 6px; }
+.footer__bottom {
+  margin-top: 3.5rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.footer__bottom a:hover { color: var(--gold); }
+
+/* ---------- 14. Scroll reveal animation -------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* line-by-line text reveal */
+.reveal-lines > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal-lines.is-visible > * { opacity: 1; transform: none; }
+.reveal-lines.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-lines.is-visible > *:nth-child(3) { transition-delay: 0.24s; }
+.reveal-lines.is-visible > *:nth-child(4) { transition-delay: 0.36s; }
+.reveal-lines.is-visible > *:nth-child(5) { transition-delay: 0.48s; }
+
+.reveal[data-delay="1"] { transition-delay: 0.12s; }
+.reveal[data-delay="2"] { transition-delay: 0.24s; }
+.reveal[data-delay="3"] { transition-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-lines > * { opacity: 1; transform: none; transition: none; }
+  .hero__scroll .line { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- 15. Responsive --------------------------------- */
+@media (max-width: 960px) {
+  .footer__top { grid-template-columns: 1fr 1fr; }
+  .footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 860px) {
+  .nav__toggle { display: block; z-index: 1100; }
+  .nav__links {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.8rem;
+    background: rgba(13, 15, 18, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(100%);
+    transition: transform 0.5s var(--ease);
+  }
+  .nav__links.open { transform: translateX(0); }
+  .nav__links a:not(.btn) { font-size: 1rem; }
+
+  .companies__grid { grid-template-columns: 1fr; }
+  .who__grid { grid-template-columns: 1fr; }
+  .who__figure { aspect-ratio: 16 / 11; order: -1; }
+  .pillars__grid { grid-template-columns: 1fr; }
+  .insights__grid { grid-template-columns: 1fr; }
+  .company-card { min-height: 0; }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .nav__logo { height: 38px; }
+  .nav.scrolled .nav__logo { height: 34px; }
+  .hero__cta, .cta-strip__btns { flex-direction: column; }
+  .hero__cta .btn, .cta-strip__btns .btn { width: 100%; justify-content: center; }
+  .footer__top { grid-template-columns: 1fr; }
+  .footer__bottom { flex-direction: column; }
+}
