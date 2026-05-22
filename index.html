@@ -38,19 +38,15 @@
   <!-- ============================ NAV ============================ -->
   <nav class="nav" id="nav">
     <a class="nav__brand" href="index.html" aria-label="New Life Capital Partners home">
-      <img class="nav__logo" src="assets/logos/nlcp-logo.png" alt="New Life Capital Partners"
-           onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden');" />
-      <span class="nav__brand-fallback" hidden>
-        <span class="mark">New Life Capital Partners</span>
-        <span class="sub">Real Estate Capital &amp; Operations</span>
-      </span>
+      <img class="nav__logo" src="assets/logos/nlcp-logo.png" alt="New Life Capital Partners" />
+      <span class="nav__tagline">Real Estate Capital &amp; Operations</span>
     </a>
 
     <ul class="nav__links" id="navLinks">
       <li><a href="#companies">Companies</a></li>
       <li><a href="#who">About</a></li>
       <li><a href="#what">What We Do</a></li>
-      <li><a href="#insights">Insights</a></li>
+      <li><a href="insights.html">Insights</a></li>
       <li><a class="btn btn--outline" href="#contact">Get In Touch</a></li>
     </ul>
 
@@ -100,9 +96,10 @@
           <!-- Card 1 — High Hopes Home Buyers -->
           <article class="company-card reveal">
             <div>
-              <div class="company-card__logo">High&nbsp;Hopes <span class="accent">Home Buyers</span></div>
+              <div class="company-card__brand">
+                <img src="assets/logos/high-hopes-logo.png" alt="High Hopes Home Buyers" />
+              </div>
               <div class="company-card__type">Property Acquisition</div>
-              <div class="placeholder-tag">Logo placeholder — add high-hopes-logo.svg</div>
             </div>
             <p class="company-card__desc">"Fast, fair, and purposeful property acquisition."</p>
             <ul class="company-card__list">
@@ -121,9 +118,10 @@
           <!-- Card 2 — Newera Property Management -->
           <article class="company-card reveal" data-delay="1">
             <div>
-              <div class="company-card__logo">New<span class="accent">era</span> Property&nbsp;Management</div>
+              <div class="company-card__brand">
+                <img src="assets/logos/newera-logo.png" alt="Newera Property Management" />
+              </div>
               <div class="company-card__type">Property Management</div>
-              <div class="placeholder-tag">Logo placeholder — add newera-logo.svg</div>
             </div>
             <p class="company-card__desc">"Professional management built for long-term asset value."</p>
             <ul class="company-card__list">
@@ -254,7 +252,7 @@
             <span class="label">Insights</span>
             <h2>Perspective &amp; analysis.</h2>
           </div>
-          <a class="btn--ghost" href="#">
+          <a class="btn--ghost" href="insights.html">
             View All Insights <span class="arrow">&rarr;</span>
           </a>
         </div>
@@ -262,65 +260,71 @@
         <div class="insights__grid">
           <!-- Article 1 -->
           <article class="article-card reveal">
-            <div class="article-card__img" aria-hidden="true"></div>
-            <div class="article-card__body">
-              <div class="article-card__meta">
-                <span class="tag">Market Trends</span>
-                <span class="dot">&bull;</span>
-                <span class="readtime">6 min read</span>
+            <a class="card-link" href="insights/patient-capital.html">
+              <div class="article-card__img" aria-hidden="true"></div>
+              <div class="article-card__body">
+                <div class="article-card__meta">
+                  <span class="tag">Market Trends</span>
+                  <span class="dot">&bull;</span>
+                  <span class="readtime">6 min read</span>
+                </div>
+                <h3>Why Patient Capital Wins in Residential Real Estate</h3>
+                <p class="article-card__excerpt">
+                  The market rewards conviction over speed. A look at how a long-horizon
+                  approach reshapes acquisition decisions.
+                </p>
+                <div class="article-card__foot">
+                  <span class="author">NLCP Editorial Desk</span>
+                  <span>May 12, 2026</span>
+                </div>
               </div>
-              <h3>Why Patient Capital Wins in Residential Real Estate</h3>
-              <p class="article-card__excerpt">
-                The market rewards conviction over speed. A look at how a long-horizon
-                approach reshapes acquisition decisions.
-              </p>
-              <div class="article-card__foot">
-                <span class="author">NLCP Editorial</span>
-                <span>Coming soon</span>
-              </div>
-            </div>
+            </a>
           </article>
 
           <!-- Article 2 -->
           <article class="article-card reveal" data-delay="1">
-            <div class="article-card__img" aria-hidden="true"></div>
-            <div class="article-card__body">
-              <div class="article-card__meta">
-                <span class="tag">Property Management</span>
-                <span class="dot">&bull;</span>
-                <span class="readtime">5 min read</span>
+            <a class="card-link" href="insights/tenant-turnover.html">
+              <div class="article-card__img" aria-hidden="true"></div>
+              <div class="article-card__body">
+                <div class="article-card__meta">
+                  <span class="tag">Property Management</span>
+                  <span class="dot">&bull;</span>
+                  <span class="readtime">5 min read</span>
+                </div>
+                <h3>The True Cost of Tenant Turnover — And How to Reduce It</h3>
+                <p class="article-card__excerpt">
+                  Retention is an asset strategy. We break down the numbers behind
+                  resident loyalty and proactive management.
+                </p>
+                <div class="article-card__foot">
+                  <span class="author">NLCP Editorial Desk</span>
+                  <span>April 28, 2026</span>
+                </div>
               </div>
-              <h3>The True Cost of Tenant Turnover — And How to Reduce It</h3>
-              <p class="article-card__excerpt">
-                Retention is an asset strategy. We break down the numbers behind
-                resident loyalty and proactive management.
-              </p>
-              <div class="article-card__foot">
-                <span class="author">NLCP Editorial</span>
-                <span>Coming soon</span>
-              </div>
-            </div>
+            </a>
           </article>
 
           <!-- Article 3 -->
           <article class="article-card reveal" data-delay="2">
-            <div class="article-card__img" aria-hidden="true"></div>
-            <div class="article-card__body">
-              <div class="article-card__meta">
-                <span class="tag">Investing 101</span>
-                <span class="dot">&bull;</span>
-                <span class="readtime">7 min read</span>
+            <a class="card-link" href="insights/real-estate-ecosystem.html">
+              <div class="article-card__img" aria-hidden="true"></div>
+              <div class="article-card__body">
+                <div class="article-card__meta">
+                  <span class="tag">Investing 101</span>
+                  <span class="dot">&bull;</span>
+                  <span class="readtime">7 min read</span>
+                </div>
+                <h3>Building a Real Estate Ecosystem: A Primer for Partners</h3>
+                <p class="article-card__excerpt">
+                  How a multi-company structure creates resilience — and what it means
+                  for the partners who grow alongside it.
+                </p>
+                <div class="article-card__foot">
+                  <span class="author">NLCP Editorial Desk</span>
+                  <span>April 9, 2026</span>
+                </div>
               </div>
-              <h3>Building a Real Estate Ecosystem: A Primer for Partners</h3>
-              <p class="article-card__excerpt">
-                How a multi-company structure creates resilience — and what it means
-                for the partners who grow alongside it.
-              </p>
-              <div class="article-card__foot">
-                <span class="author">NLCP Editorial</span>
-                <span>Coming soon</span>
-              </div>
-            </div>
+            </a>
           </article>
         </div>
       </div>
@@ -349,13 +353,9 @@
       <div class="footer__top">
         <div class="footer__brand">
           <a href="index.html" aria-label="New Life Capital Partners home">
-            <img class="footer__logo" src="assets/logos/nlcp-logo.png" alt="New Life Capital Partners"
-                 onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden');" />
-            <span class="footer__brand-fallback" hidden>
-              <span class="mark">New Life Capital Partners</span>
-              <span class="sub">Real Estate Capital &amp; Operations</span>
-            </span>
+            <img class="footer__logo" src="assets/logos/nlcp-logo.png" alt="New Life Capital Partners" />
           </a>
+          <div class="footer__tagline">Real Estate Capital &amp; Operations</div>
           <p>
             The parent company of a growing ecosystem of real estate businesses —
             built for transformation, renewal, and long-term value.

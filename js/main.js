@@ -59,4 +59,26 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---- 5. Insights category filter --------------------------- */
+  var filterBar = document.getElementById('insightsFilter');
+  if (filterBar) {
+    var tags = filterBar.querySelectorAll('.filter-tag');
+    var cards = document.querySelectorAll('#articleGrid .article-card');
+    var empty = document.getElementById('insightsEmpty');
+    filterBar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.filter-tag');
+      if (!btn) return;
+      tags.forEach(function (t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.getAttribute('data-filter');
+      var shown = 0;
+      cards.forEach(function (c) {
+        var match = (f === 'all' || c.getAttribute('data-category') === f);
+        c.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      if (empty) empty.hidden = (shown !== 0);
+    });
+  }
+
 })();
