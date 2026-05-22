@@ -322,11 +322,23 @@ strong { color: var(--text); font-weight: 500; }
 .hero__content {
   position: relative;
   z-index: 1;
-  max-width: 940px;
+  max-width: 1180px;
   padding: 8rem var(--gutter) 6rem;
 }
+.hero__logo {
+  display: block;
+  width: auto;
+  height: clamp(60px, 10.5vw, 120px);
+  margin: 0 auto 2.4rem;
+}
 .hero__content .label { display: block; margin-bottom: 2rem; }
-.hero h1 { margin-bottom: 1.8rem; }
+.hero h1 {
+  font-size: clamp(1.6rem, 3.3vw, 2.75rem);
+  margin-bottom: 1.8rem;
+}
+@media (min-width: 920px) {
+  .hero h1 { white-space: nowrap; }
+}
 .hero h1 em {
   font-style: italic;
   color: var(--gold);
