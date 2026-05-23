@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact | New Life Capital Partners</title>
+  <meta name="description" content="Contact New Life Capital Partners — whether you're looking to sell a property, explore management services, or partner with our real estate ecosystem." />
+  <link rel="canonical" href="https://newlifecapitalpartners.com/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact | New Life Capital Partners" />
+  <meta property="og:description" content="Sell a property, explore management services, or partner with our ecosystem — we want to hear from you." />
+  <meta name="theme-color" content="#0D0F12" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- ===== Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID ===== -->
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <nav class="nav" id="nav">
+    <a class="nav__brand" href="index.html" aria-label="New Life Capital Partners home">
+      <img class="nav__logo" src="assets/logos/nlcp-logo.png" alt="New Life Capital Partners" />
+      <span class="nav__tagline">Real Estate Capital &amp; Operations</span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="companies.html">Companies</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#what">What We Do</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a class="btn btn--outline" href="contact.html">Get In Touch</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- ======================= PAGE HEADER ======================= -->
+    <header class="page-header">
+      <div class="wrap">
+        <div class="reveal-lines">
+          <span class="label">Contact</span>
+          <h1>Let's <em>talk.</em></h1>
+          <p>
+            Whether you're looking to sell a property, explore management services,
+            or partner with our ecosystem — we want to hear from you.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================== CONTACT ========================== -->
+    <section class="section">
+      <div class="wrap">
+        <div class="contact-grid">
+
+          <!-- Left — intro + details -->
+          <div class="contact-intro reveal">
+            <span class="label">Reach Us</span>
+            <h2>A direct line to the firm.</h2>
+            <p>
+              Every inquiry reaches our team directly. Tell us a little about what
+              you need, and the right person at New Life Capital Partners — or one
+              of our companies — will follow up.
+            </p>
+
+            <div class="contact-detail">
+              <span class="contact-detail__label">Email</span>
+              <a href="mailto:info@newlifecapitalpartners.com">info@newlifecapitalpartners.com</a>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail__label">Phone</span>
+              <a href="tel:+12255719592">+1 (225) 571-9592</a>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail__label">The Ecosystem</span>
+              <a href="https://www.highhopeshomebuyers.com" target="_blank" rel="noopener">High Hopes Home Buyers &rarr;</a>
+              <a href="https://www.newerapm.com" target="_blank" rel="noopener">Newera Property Management &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Right — form -->
+          <div class="contact-form-wrap reveal" data-delay="1">
+            <!-- Formspree-connected contact form -->
+            <form id="contactForm" class="contact-form"
+                  action="https://formspree.io/f/mredlqdg" method="POST">
+              <div class="field">
+                <label for="cf-name">Name</label>
+                <input id="cf-name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="cf-email">Email</label>
+                <input id="cf-email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="cf-phone">Phone <span class="optional">(optional)</span></label>
+                <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="cf-subject">Subject</label>
+                <select id="cf-subject" name="subject">
+                  <option>Sell a Property</option>
+                  <option>Property Management</option>
+                  <option>Partnership</option>
+                  <option>General Inquiry</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="5" required></textarea>
+              </div>
+              <input type="hidden" name="_subject" value="New inquiry — newlifecapitalpartners.com" />
+              <button class="btn btn--primary" type="submit">Send Message</button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================== FOOTER ========================== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="New Life Capital Partners home">
+            <img class="footer__logo" src="assets/logos/nlcp-logo.png" alt="New Life Capital Partners" />
+          </a>
+          <div class="footer__tagline">Real Estate Capital &amp; Operations</div>
+          <p>
+            The parent company of a growing ecosystem of real estate businesses —
+            built for transformation, renewal, and long-term value.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="companies.html">Our Companies</a>
+          <a href="index.html#what">What We Do</a>
+          <a href="insights.html">Insights</a>
+        </div>
+        <div class="footer__col">
+          <h4>Ecosystem</h4>
+          <a href="https://www.highhopeshomebuyers.com" target="_blank" rel="noopener">High Hopes Home Buyers</a>
+          <a href="https://www.newerapm.com" target="_blank" rel="noopener">Newera Property Management</a>
+          <a href="contact.html">Partner Inquiry</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:info@newlifecapitalpartners.com">info@newlifecapitalpartners.com</a>
+          <a href="tel:+12255719592">+1 (225) 571-9592</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> New Life Capital Partners. All rights reserved.</span>
+        <span><a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of Use</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

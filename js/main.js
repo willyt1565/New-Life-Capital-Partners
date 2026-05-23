@@ -81,4 +81,43 @@
     });
   }
 
+  /* ---- 6. Contact form — Formspree AJAX submit ---------------- */
+  var cform = document.getElementById('contactForm');
+  if (cform) {
+    var fStatus = document.getElementById('formStatus');
+    cform.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = cform.querySelector('button[type="submit"]');
+      fStatus.className = 'form-status';
+      fStatus.textContent = '';
+      if (cform.action.indexOf('YOUR_FORM_ID') !== -1) {
+        fStatus.className = 'form-status err';
+        fStatus.textContent = 'The form is not connected yet — add your Formspree ID to enable sending.';
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch(cform.action, {
+        method: 'POST',
+        body: new FormData(cform),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (r) {
+        if (r.ok) {
+          cform.reset();
+          fStatus.className = 'form-status ok';
+          fStatus.textContent = 'Thank you — your message has been sent. We will be in touch shortly.';
+        } else {
+          fStatus.className = 'form-status err';
+          fStatus.textContent = 'Something went wrong. Please email info@newlifecapitalpartners.com.';
+        }
+      }).catch(function () {
+        fStatus.className = 'form-status err';
+        fStatus.textContent = 'Something went wrong. Please email info@newlifecapitalpartners.com.';
+      }).finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      });
+    });
+  }
+
 })();
