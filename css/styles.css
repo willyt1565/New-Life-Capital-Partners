@@ -14,6 +14,7 @@
   --text:          #EAEAEA;   /* primary soft white text */
   --muted:         #8A8F9E;   /* medium gray muted text */
   --border:        #1F2533;   /* subtle dark dividers */
+  --card-light:    #E8E3D7;   /* warm light "gold-gray" card surface */
 
   --gold-soft:     rgba(201, 169, 110, 0.14);
   --gold-glow:     rgba(201, 169, 110, 0.30);
@@ -389,19 +390,18 @@ strong { color: var(--text); font-weight: 500; }
   margin-top: 3.5rem;
 }
 .company-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
+  background: var(--card-light);
+  border: 1px solid rgba(13, 15, 18, 0.08);
+  border-radius: 3px;
   padding: clamp(2.2rem, 4vw, 3.6rem);
   display: flex;
   flex-direction: column;
   min-height: 420px;
-  transition: transform 0.45s var(--ease), border-color 0.45s var(--ease),
-              box-shadow 0.45s var(--ease);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
 .company-card:hover {
   transform: translateY(-6px);
-  border-color: var(--gold);
-  box-shadow: 0 24px 60px -28px var(--gold-glow);
+  box-shadow: 0 26px 60px -24px rgba(201, 169, 110, 0.5);
 }
 .company-card__logo {
   font-family: var(--font-display);
@@ -416,9 +416,9 @@ strong { color: var(--text); font-weight: 500; }
   font-size: 0.62rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #8A6F3E;
 }
-/* Sub-company logo — transparent, sitting directly on the dark card */
+/* Sub-company logo — original colours, on the light card */
 .company-card__brand {
   display: flex;
   align-items: center;
@@ -436,7 +436,7 @@ strong { color: var(--text); font-weight: 500; }
   font-family: var(--font-display);
   font-size: clamp(1.3rem, 2vw, 1.7rem);
   font-style: italic;
-  color: var(--text);
+  color: #16181D;
   margin: 2rem 0 1.5rem;
   line-height: 1.4;
 }
@@ -445,10 +445,10 @@ strong { color: var(--text); font-weight: 500; }
 }
 .company-card__list li {
   font-size: 0.92rem;
-  color: var(--muted);
+  color: #4A4D54;
   padding: 0.55rem 0 0.55rem 1.4rem;
   position: relative;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(13, 15, 18, 0.12);
 }
 .company-card__list li:first-child { border-top: 0; }
 .company-card__list li::before {
@@ -456,10 +456,21 @@ strong { color: var(--text); font-weight: 500; }
   position: absolute;
   left: 0; top: 1.15rem;
   width: 6px; height: 6px;
-  background: var(--gold);
+  background: #A8843F;
   transform: rotate(45deg);
 }
 .company-card__foot { margin-top: auto; }
+/* Visit button — solid dark, for contrast on the light card */
+.company-card .btn--outline {
+  background: #15171C;
+  color: var(--ivory);
+  border-color: #15171C;
+}
+.company-card .btn--outline:hover {
+  background: #000;
+  border-color: #000;
+  transform: translateY(-2px);
+}
 
 /* placeholder logo chip shown until a real logo file is added */
 .placeholder-tag {
@@ -1111,8 +1122,8 @@ strong { color: var(--text); font-weight: 500; }
 }
 .company-feature + .company-feature { border-top: 1px solid var(--border); }
 .company-feature__panel {
-  background: var(--bg-navy);
-  border: 1px solid var(--border);
+  background: var(--card-light);
+  border: 1px solid rgba(13, 15, 18, 0.08);
   aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
