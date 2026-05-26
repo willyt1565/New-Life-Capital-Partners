@@ -6,37 +6,37 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/about.html</loc>
+    <loc>https://newlifecapitalpartners.com/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/companies.html</loc>
+    <loc>https://newlifecapitalpartners.com/companies/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/contact.html</loc>
+    <loc>https://newlifecapitalpartners.com/contact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/insights.html</loc>
+    <loc>https://newlifecapitalpartners.com/insights/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/insights/patient-capital.html</loc>
+    <loc>https://newlifecapitalpartners.com/insights/patient-capital/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/insights/tenant-turnover.html</loc>
+    <loc>https://newlifecapitalpartners.com/insights/tenant-turnover/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://newlifecapitalpartners.com/insights/real-estate-ecosystem.html</loc>
+    <loc>https://newlifecapitalpartners.com/insights/real-estate-ecosystem/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
