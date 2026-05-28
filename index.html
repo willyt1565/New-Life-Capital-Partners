@@ -257,7 +257,7 @@
           </a>
         </div>
 
-        <div class="insights__grid">
+        <div class="insights__grid" id="homeArticleGrid">
           <!-- Article 1 -->
           <article class="article-card reveal">
             <a class="card-link" href="/insights/patient-capital/">
@@ -390,5 +390,85 @@
   </footer>
 
   <script src="/js/main.js"></script>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BEEHIIV RSS — HOMEPAGE LATEST INSIGHTS
+       Pulls the 3 most recent Beehiiv articles and renders them
+       in the Latest Insights grid. Falls back to static cards
+       if Beehiiv has no published posts yet.
+  ════════════════════════════════════════════════════════════ -->
+  <script>
+  (async function loadHomeInsights() {
+    var BEEHIIV_RSS = 'https://rss.beehiiv.com/feeds/yMDDA9Q2DQ.xml';
+    var API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(BEEHIIV_RSS);
+
+    var tagToCategory = {
+      'Market Trends':        'market-trends',
+      'Property Acquisition': 'property-acquisition',
+      'Property Management':  'property-management',
+      'Investing 101':        'investing-101'
+    };
+
+    var categoryImg = {
+      'market-trends':        'img-patient-capital',
+      'property-acquisition': 'img-real-estate-ecosystem',
+      'property-management':  'img-tenant-turnover',
+      'investing-101':        'img-real-estate-ecosystem'
+    };
+
+    function fmtDate(str) {
+      return new Date(str).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function stripHtml(html) {
+      return html ? html.replace(/<[^>]*>/g, '').trim() : '';
+    }
+
+    try {
+      var res  = await fetch(API_URL);
+      var data = await res.json();
+
+      if (data.status !== 'ok' || !data.items || data.items.length === 0) return;
+
+      var items = data.items.slice(0, 3);
+      var grid  = document.getElementById('homeArticleGrid');
+      if (!grid) return;
+
+      var html = items.map(function(item, i) {
+        var rawTag  = (item.categories && item.categories[0]) || 'Insights';
+        var catKey  = tagToCategory[rawTag] || 'market-trends';
+        var imgCls  = categoryImg[catKey]   || 'img-patient-capital';
+        var imgAttr = item.thumbnail
+          ? 'style="background-image:url(\'' + item.thumbnail + '\');background-size:cover;background-position:center;"'
+          : '';
+        var excerpt = stripHtml(item.description).substring(0, 120) + '…';
+
+        return '<article class="article-card reveal" data-delay="' + i + '">' +
+          '<a class="card-link" href="' + item.link + '" target="_blank" rel="noopener">' +
+            '<div class="article-card__img ' + (item.thumbnail ? '' : imgCls) + '" ' + imgAttr + ' aria-hidden="true"></div>' +
+            '<div class="article-card__body">' +
+              '<div class="article-card__meta">' +
+                '<span class="tag">' + rawTag + '</span>' +
+                '<span class="dot">&bull;</span>' +
+                '<span class="readtime">5 min read</span>' +
+              '</div>' +
+              '<h3>' + item.title + '</h3>' +
+              '<p class="article-card__excerpt">' + excerpt + '</p>' +
+              '<div class="article-card__foot">' +
+                '<span class="author">NLCP Editorial Desk</span>' +
+                '<span>' + fmtDate(item.pubDate) + '</span>' +
+              '</div>' +
+            '</div>' +
+          '</a>' +
+        '</article>';
+      }).join('');
+
+      grid.innerHTML = html;
+
+    } catch (e) {
+      /* Silently keep static articles as fallback */
+    }
+  })();
+  </script>
 </body>
 </html>
