@@ -182,11 +182,13 @@
           <span class="label">Stay Informed</span>
           <h3>Insights, delivered occasionally.</h3>
           <p>Considered writing on real estate and long-term value — no noise.</p>
-          <!-- TODO: connect to Beehiiv — replace this form with your Beehiiv embed code -->
-          <form onsubmit="event.preventDefault(); this.reset(); alert('Thank you — newsletter signup will be connected to Beehiiv.');">
-            <input type="email" name="email" placeholder="Your email address" required />
-            <button class="btn btn--primary" type="submit">Subscribe</button>
-          </form>
+          <iframe src="https://embeds.beehiiv.com/6ea2778e-8905-424f-bc81-6f24c425a074"
+                  data-test-id="beehiiv-embed"
+                  width="100%"
+                  height="320"
+                  frameborder="0"
+                  scrolling="no"
+                  style="border-radius:4px;border:2px solid rgba(255,255,255,0.12);margin:0;background-color:transparent;"></iframe>
         </div>
       </div>
     </section>
@@ -233,5 +235,128 @@
   </footer>
 
   <script src="/js/main.js"></script>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BEEHIIV RSS INTEGRATION
+       Fetches published articles from Beehiiv and renders them
+       on this page automatically. Falls back to static articles
+       if Beehiiv has no published posts yet.
+  ════════════════════════════════════════════════════════════ -->
+  <script>
+  (async function loadBeehiivFeed() {
+    var BEEHIIV_RSS = 'https://rss.beehiiv.com/feeds/pub_6ea2778e-8905-424f-bc81-6f24c425a074.xml';
+    var API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(BEEHIIV_RSS) + '&count=20&order_by=pubDate&order_dir=desc';
+
+    var tagToCategory = {
+      'Market Trends':        'market-trends',
+      'Property Acquisition': 'property-acquisition',
+      'Property Management':  'property-management',
+      'Investing 101':        'investing-101'
+    };
+
+    var categoryImg = {
+      'market-trends':        'img-patient-capital',
+      'property-acquisition': 'img-real-estate-ecosystem',
+      'property-management':  'img-tenant-turnover',
+      'investing-101':        'img-real-estate-ecosystem'
+    };
+
+    function fmtDate(str) {
+      return new Date(str).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function stripHtml(html) {
+      return html ? html.replace(/<[^>]*>/g, '').trim() : '';
+    }
+
+    function buildImgAttr(item, cssClass) {
+      if (item.thumbnail) {
+        return 'style="background-image:url(\'' + item.thumbnail + '\');background-size:cover;background-position:center;"';
+      }
+      return 'class="article-card__img ' + cssClass + '"';
+    }
+
+    try {
+      var res  = await fetch(API_URL);
+      var data = await res.json();
+
+      if (data.status !== 'ok' || !data.items || data.items.length === 0) return;
+
+      var items = data.items;
+      var grid  = document.getElementById('articleGrid');
+      var featEl = document.querySelector('.featured-article');
+
+      /* ── Article grid ─────────────────────────────────── */
+      if (grid) {
+        var html = items.map(function(item, i) {
+          var rawTag  = (item.categories && item.categories[0]) || 'Insights';
+          var catKey  = tagToCategory[rawTag] || 'market-trends';
+          var imgCls  = categoryImg[catKey]   || 'img-patient-capital';
+          var imgAttr = item.thumbnail
+            ? 'style="background-image:url(\'' + item.thumbnail + '\');background-size:cover;background-position:center;"'
+            : '';
+          var excerpt = stripHtml(item.description).substring(0, 130) + '…';
+
+          return '<article class="article-card reveal" data-category="' + catKey + '" data-delay="' + (i % 3) + '">' +
+            '<a class="card-link" href="' + item.link + '" target="_blank" rel="noopener">' +
+              '<div class="article-card__img ' + (item.thumbnail ? '' : imgCls) + '" ' + imgAttr + ' aria-hidden="true"></div>' +
+              '<div class="article-card__body">' +
+                '<div class="article-card__meta">' +
+                  '<span class="tag">' + rawTag + '</span>' +
+                  '<span class="dot">&bull;</span>' +
+                  '<span class="readtime">5 min read</span>' +
+                '</div>' +
+                '<h3>' + item.title + '</h3>' +
+                '<p class="article-card__excerpt">' + excerpt + '</p>' +
+                '<div class="article-card__foot">' +
+                  '<span class="author">' + (item.author || 'Thomas Lawhun') + '</span>' +
+                  '<span>' + fmtDate(item.pubDate) + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</a>' +
+          '</article>';
+        }).join('');
+
+        grid.innerHTML = html;
+
+        /* hide "no articles" message */
+        var empty = document.getElementById('insightsEmpty');
+        if (empty) empty.hidden = true;
+      }
+
+      /* ── Featured article (latest post) ──────────────── */
+      if (featEl && items.length > 0) {
+        var f      = items[0];
+        var rawTag = (f.categories && f.categories[0]) || 'Insights';
+        var catKey = tagToCategory[rawTag] || 'market-trends';
+        var imgCls = categoryImg[catKey]   || 'img-patient-capital';
+        var imgAttr = f.thumbnail
+          ? 'style="background-image:url(\'' + f.thumbnail + '\');background-size:cover;background-position:center;"'
+          : '';
+        var excerpt = stripHtml(f.description).substring(0, 200) + '…';
+
+        featEl.innerHTML =
+          '<a class="featured-article__img ' + (f.thumbnail ? '' : imgCls) + '" ' + imgAttr +
+              ' href="' + f.link + '" target="_blank" rel="noopener"' +
+              ' aria-label="Read: ' + f.title + '"></a>' +
+          '<div class="featured-article__body">' +
+            '<div class="meta">' +
+              '<span class="tag">' + rawTag + '</span>' +
+              '<span class="dot">&bull;</span>' +
+              '<span class="date">' + fmtDate(f.pubDate) + '</span>' +
+            '</div>' +
+            '<h2>' + f.title + '</h2>' +
+            '<p>' + excerpt + '</p>' +
+            '<a class="btn--ghost" href="' + f.link + '" target="_blank" rel="noopener">' +
+              'Read the Article <span class="arrow">&rarr;</span>' +
+            '</a>' +
+          '</div>';
+      }
+
+    } catch (e) {
+      /* Silently keep static articles as fallback */
+    }
+  })();
+  </script>
 </body>
 </html>
