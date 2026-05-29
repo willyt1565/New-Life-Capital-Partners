@@ -182,28 +182,7 @@
           <span class="label">Stay Informed</span>
           <h3>Insights, delivered occasionally.</h3>
           <p>Considered writing on real estate and long-term value — no noise.</p>
-          <form class="newsletter__form" id="newsletterForm" onsubmit="return beehiivSubscribe(this);">
-            <input type="email" name="email" placeholder="Your email address" required autocomplete="email" />
-            <button class="btn btn--primary" type="submit">Subscribe</button>
-          </form>
-          <script>
-          function beehiivSubscribe(form) {
-            var email = form.querySelector('input[type="email"]').value;
-            var btn = form.querySelector('button');
-            btn.textContent = 'Subscribing…';
-            btn.disabled = true;
-            window.open(
-              'https://thomas-newsletter-ebd454.beehiiv.com/subscribe?email=' + encodeURIComponent(email),
-              '_blank'
-            );
-            setTimeout(function() {
-              btn.textContent = 'Subscribe';
-              btn.disabled = false;
-              form.reset();
-            }, 2000);
-            return false;
-          }
-          </script>
+          <a class="btn btn--primary" href="https://thomas-newsletter-ebd454.beehiiv.com/subscribe" target="_blank" rel="noopener">Subscribe</a>
         </div>
       </div>
     </section>
