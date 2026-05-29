@@ -320,6 +320,12 @@
 
         grid.innerHTML = html;
 
+        /* Make dynamically injected cards visible immediately —
+           IntersectionObserver only watches elements present at page load */
+        grid.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.add('is-visible');
+        });
+
         /* hide "no articles" message */
         var empty = document.getElementById('insightsEmpty');
         if (empty) empty.hidden = true;

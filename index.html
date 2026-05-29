@@ -465,6 +465,11 @@
 
       grid.innerHTML = html;
 
+      /* Make dynamically injected cards visible immediately */
+      grid.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('is-visible');
+      });
+
     } catch (e) {
       /* Silently keep static articles as fallback */
     }
