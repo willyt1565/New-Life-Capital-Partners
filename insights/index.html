@@ -263,9 +263,16 @@
       return html ? html.replace(/<[^>]*>/g, '').trim() : '';
     }
 
+    function getImg(item) {
+      return item.thumbnail ||
+             (item.enclosure && item.enclosure.link) ||
+             '';
+    }
+
     function buildImgAttr(item, cssClass) {
-      if (item.thumbnail) {
-        return 'style="background-image:url(\'' + item.thumbnail + '\');background-size:cover;background-position:center;"';
+      var img = getImg(item);
+      if (img) {
+        return 'style="background-image:url(\'' + img + '\');background-size:cover;background-position:center;"';
       }
       return 'class="article-card__img ' + cssClass + '"';
     }
@@ -286,14 +293,15 @@
           var rawTag  = (item.categories && item.categories[0]) || 'Insights';
           var catKey  = tagToCategory[rawTag] || 'market-trends';
           var imgCls  = categoryImg[catKey]   || 'img-patient-capital';
-          var imgAttr = item.thumbnail
-            ? 'style="background-image:url(\'' + item.thumbnail + '\');background-size:cover;background-position:center;"'
+          var imgSrc  = getImg(item);
+          var imgAttr = imgSrc
+            ? 'style="background-image:url(\'' + imgSrc + '\');background-size:cover;background-position:center;"'
             : '';
           var excerpt = stripHtml(item.description).substring(0, 130) + '…';
 
           return '<article class="article-card reveal" data-category="' + catKey + '" data-delay="' + (i % 3) + '">' +
             '<a class="card-link" href="' + item.link + '" target="_blank" rel="noopener">' +
-              '<div class="article-card__img ' + (item.thumbnail ? '' : imgCls) + '" ' + imgAttr + ' aria-hidden="true"></div>' +
+              '<div class="article-card__img ' + (imgSrc ? '' : imgCls) + '" ' + imgAttr + ' aria-hidden="true"></div>' +
               '<div class="article-card__body">' +
                 '<div class="article-card__meta">' +
                   '<span class="tag">' + rawTag + '</span>' +
@@ -330,13 +338,14 @@
         var rawTag = (f.categories && f.categories[0]) || 'Insights';
         var catKey = tagToCategory[rawTag] || 'market-trends';
         var imgCls = categoryImg[catKey]   || 'img-patient-capital';
-        var imgAttr = f.thumbnail
-          ? 'style="background-image:url(\'' + f.thumbnail + '\');background-size:cover;background-position:center;"'
+        var fImgSrc  = getImg(f);
+        var imgAttr = fImgSrc
+          ? 'style="background-image:url(\'' + fImgSrc + '\');background-size:cover;background-position:center;"'
           : '';
         var excerpt = stripHtml(f.description).substring(0, 200) + '…';
 
         featEl.innerHTML =
-          '<a class="featured-article__img ' + (f.thumbnail ? '' : imgCls) + '" ' + imgAttr +
+          '<a class="featured-article__img ' + (fImgSrc ? '' : imgCls) + '" ' + imgAttr +
               ' href="' + f.link + '" target="_blank" rel="noopener"' +
               ' aria-label="Read: ' + f.title + '"></a>' +
           '<div class="featured-article__body">' +
