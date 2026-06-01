@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>New Life Insider — Real Estate Intelligence for First Responders & Veterans</title>
+  <meta name="description" content="Join the New Life Insider newsletter — weekly real estate insights, deal analysis, and wealth-building strategies designed for first responders and veterans." />
+  <link rel="canonical" href="https://newlifecapitalpartners.com/subscribe/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="New Life Insider — Real Estate Intelligence for First Responders & Veterans" />
+  <meta property="og:description" content="Join 1,000+ first responders and veterans building long-term wealth through real estate. Free weekly insights from New Life Capital Partners." />
+  <meta name="theme-color" content="#0D0F12" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/favicon-180.png" />
+
+  <style>
+    /* ── Subscribe page overrides ───────────────────────── */
+
+    /* Hero — full-viewport dark hero with centered content */
+    .sub-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(7rem, 12vw, 11rem) var(--gutter) clamp(5rem, 8vw, 8rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial gold glow behind hero content */
+    .sub-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 45%,
+          rgba(201,169,110,0.07) 0%,
+          transparent 70%);
+      pointer-events: none;
+    }
+
+    .sub-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+    }
+
+    .sub-hero .label {
+      display: block;
+      margin-bottom: 1.8rem;
+    }
+
+    .sub-hero h1 {
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      line-height: 1.06;
+      margin-bottom: 1.5rem;
+    }
+
+    .sub-hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .sub-hero__lead {
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.75;
+    }
+
+    /* Subscribe form in hero */
+    .sub-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .sub-form input[type="email"] {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.85rem 1.1rem;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      transition: border-color 0.25s;
+    }
+
+    .sub-form input[type="email"]::placeholder {
+      color: var(--muted);
+    }
+
+    .sub-form input[type="email"]:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(201,169,110,0.04);
+    }
+
+    .sub-form .btn--primary {
+      white-space: nowrap;
+      padding: 0.85rem 1.6rem;
+    }
+
+    .sub-hero__fine {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .sub-hero__fine a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Thin gold separator line */
+    .gold-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 3.5rem;
+      opacity: 0.55;
+    }
+
+    /* ── What you'll receive ─────────────────────────────── */
+    .sub-receive {
+      padding: var(--section-pad) var(--gutter);
+      background: var(--bg-navy);
+    }
+
+    .sub-receive__inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    .sub-receive__head {
+      text-align: center;
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+    }
+
+    .sub-receive__head .label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .sub-receive__head h2 {
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .sub-receive__head p {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* 4-column benefits grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .benefit-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem 1.8rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(201,169,110,0.35);
+      background: rgba(201,169,110,0.04);
+    }
+
+    .benefit-card__icon {
+      font-size: 1.6rem;
+      margin-bottom: 1.1rem;
+      display: block;
+      line-height: 1;
+    }
+
+    .benefit-card__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.55rem;
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* ── Who it's for ────────────────────────────────────── */
+    .sub-who {
+      padding: var(--section-pad) var(--gutter);
+    }
+
+    .sub-who__inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+    }
+
+    .sub-who__copy .label {
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .sub-who__copy h2 {
+      margin-bottom: 1.2rem;
+    }
+
+    .sub-who__copy h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .sub-who__copy p {
+      margin-bottom: 1rem;
+    }
+
+    .sub-who__copy p:last-of-type {
+      margin-bottom: 2rem;
+    }
+
+    /* Persona chips */
+    .persona-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .persona-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-family: var(--font-label);
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      background: rgba(201,169,110,0.06);
+    }
+
+    /* Stat panel */
+    .sub-who__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-block {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+    }
+
+    .stat-block__num {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-block__label {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Recent topics ───────────────────────────────────── */
+    .sub-topics {
+      padding: var(--section-pad) var(--gutter);
+      background: var(--bg-navy);
+    }
+
+    .sub-topics__inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    .sub-topics__head {
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 4vw, 4rem);
+    }
+
+    .sub-topics__head .label { display: block; margin-bottom: 1rem; }
+
+    .sub-topics__head h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+
+    /* Topic rows */
+    .topic-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .topic-item {
+      padding: 1.5rem 1.8rem;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: background 0.25s;
+    }
+
+    .topic-item:hover { background: rgba(201,169,110,0.04); }
+
+    .topic-item__dot {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 0.6rem;
+      opacity: 0.7;
+    }
+
+    .topic-item__text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .topic-item__sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: var(--font-body);
+      margin-top: 0.2rem;
+    }
+
+    /* ── Bottom CTA ──────────────────────────────────────── */
+    .sub-cta {
+      padding: var(--section-pad) var(--gutter);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sub-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%,
+        rgba(201,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .sub-cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .sub-cta .label { display: block; margin-bottom: 1.4rem; }
+
+    .sub-cta h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      margin-bottom: 0.9rem;
+    }
+
+    .sub-cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .sub-cta p {
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .sub-form {
+        flex-direction: column;
+      }
+      .sub-who__inner {
+        grid-template-columns: 1fr;
+      }
+      .sub-who__stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sub-who__stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <nav class="nav" id="nav">
+    <a class="nav__brand" href="/" aria-label="New Life Capital Partners home">
+      <img class="nav__logo" src="/assets/logos/nlcp-logo.png" alt="New Life Capital Partners" />
+      <span class="nav__tagline">Real Estate Capital &amp; Operations</span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="/companies/">Companies</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/#what">What We Do</a></li>
+      <li><a href="/insights/">Insights</a></li>
+      <li><a class="btn btn--outline" href="/contact/">Get In Touch</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- ========================= HERO ========================= -->
+    <section class="sub-hero">
+      <div class="sub-hero__inner reveal-lines">
+        <span class="label">New Life Insider</span>
+        <h1>Real Estate Intelligence.<br><em>Delivered weekly.</em></h1>
+        <p class="sub-hero__lead">
+          Join 1,000+ first responders and veterans building long-term
+          wealth through residential real estate — one deal at a time.
+        </p>
+
+        <form class="sub-form" id="subForm" action="https://newsletter.newlifecapitalpartners.com/subscribe" method="GET" target="_blank">
+          <input
+            type="email"
+            name="email"
+            id="subEmail"
+            placeholder="Your email address"
+            autocomplete="email"
+            required
+            aria-label="Email address"
+          />
+          <button class="btn btn--primary" type="submit">Subscribe Free</button>
+        </form>
+        <p class="sub-hero__fine">
+          Free forever. No spam. Unsubscribe anytime. &nbsp;|&nbsp;
+          <a href="https://newsletter.newlifecapitalpartners.com" target="_blank" rel="noopener">View past issues →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============== WHAT YOU'LL RECEIVE ==================== -->
+    <section class="sub-receive">
+      <div class="sub-receive__inner">
+        <div class="sub-receive__head reveal">
+          <span class="label">Every Issue</span>
+          <h2>What lands in your inbox</h2>
+          <p>Actionable, researched, and written for people with demanding careers who are serious about building wealth.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <span class="benefit-card__icon">📊</span>
+            <div class="benefit-card__title">Market Intelligence</div>
+            <p>Rental demand shifts, cap rate trends, and neighborhood-level data — translated into plain strategy.</p>
+          </div>
+          <div class="benefit-card reveal" data-delay="1">
+            <span class="benefit-card__icon">🏠</span>
+            <div class="benefit-card__title">Deal Analysis</div>
+            <p>Real acquisition scenarios with numbers — purchase price, cash flow, ROI — so you see exactly how deals pencil out.</p>
+          </div>
+          <div class="benefit-card reveal" data-delay="2">
+            <span class="benefit-card__icon">⚖️</span>
+            <div class="benefit-card__title">VA &amp; First Responder Strategy</div>
+            <p>How to leverage VA loans, 1033 exchanges, and first responder programs to accelerate your portfolio.</p>
+          </div>
+          <div class="benefit-card reveal" data-delay="3">
+            <span class="benefit-card__icon">🔑</span>
+            <div class="benefit-card__title">Property Management Insights</div>
+            <p>Tenant retention, turnover cost reduction, and management frameworks from our Newera PM team.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== WHO IT'S FOR ======================= -->
+    <section class="sub-who">
+      <div class="sub-who__inner">
+
+        <div class="sub-who__copy reveal">
+          <span class="label">Built For You</span>
+          <h2>Made for those who<br><em>serve and build.</em></h2>
+          <p>
+            First responders and veterans operate under pressure, think in systems,
+            and plan for the long haul. Those are the exact traits that produce
+            exceptional real estate investors.
+          </p>
+          <p>
+            The New Life Insider was built to meet you where you are — whether
+            you're buying your first rental or scaling a multi-property portfolio —
+            and give you the knowledge that compounds over time.
+          </p>
+
+          <div class="persona-list">
+            <span class="persona-chip">Firefighters</span>
+            <span class="persona-chip">Police Officers</span>
+            <span class="persona-chip">EMTs &amp; Paramedics</span>
+            <span class="persona-chip">Veterans</span>
+            <span class="persona-chip">Active Military</span>
+            <span class="persona-chip">First Responder Families</span>
+          </div>
+        </div>
+
+        <div class="sub-who__stats reveal" data-delay="1">
+          <div class="stat-block">
+            <div class="stat-block__num">$0</div>
+            <div class="stat-block__label">Cost to subscribe — always free, always independent</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-block__num">1×</div>
+            <div class="stat-block__label">Issue per week — deep and useful, never overwhelming</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-block__num">5+</div>
+            <div class="stat-block__label">Years of combined real estate capital &amp; operations experience</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-block__num">100%</div>
+            <div class="stat-block__label">Focused on residential real estate for everyday investors</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= RECENT TOPICS ======================== -->
+    <section class="sub-topics">
+      <div class="sub-topics__inner">
+        <div class="sub-topics__head reveal">
+          <span class="label">Recent Issues</span>
+          <h2>What we've been writing about</h2>
+        </div>
+
+        <div class="topic-list reveal">
+          <div class="topic-item">
+            <div class="topic-item__dot"></div>
+            <div>
+              <div class="topic-item__text">Why Real Estate Is the Perfect Asset Class for First Responders</div>
+              <div class="topic-item__sub">Cash flow, shift-schedule investing &amp; forced appreciation</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-item__dot"></div>
+            <div>
+              <div class="topic-item__text">Building a Real Estate Portfolio with Your VA Loan</div>
+              <div class="topic-item__sub">House hacking, multi-unit financing &amp; the VA entitlement ladder</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-item__dot"></div>
+            <div>
+              <div class="topic-item__text">The True Cost of Tenant Turnover — and How to Reduce It</div>
+              <div class="topic-item__sub">Loss calculations, retention systems &amp; vacancy prevention</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-item__dot"></div>
+            <div>
+              <div class="topic-item__text">The First Responder's Guide to Cash-Flowing Real Estate</div>
+              <div class="topic-item__sub">Market selection, property analysis &amp; financing strategies</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-item__dot"></div>
+            <div>
+              <div class="topic-item__text">How Cap Rates Are Shifting in Secondary Markets</div>
+              <div class="topic-item__sub">Where the yield-chasing investor is moving next</div>
+            </div>
+          </div>
+          <div class="topic-item">
+            <div class="topic-item__dot"></div>
+            <div>
+              <div class="topic-item__text">Property Management That Actually Protects Your Returns</div>
+              <div class="topic-item__sub">Systems, screening &amp; the cost of self-managing poorly</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <a class="btn btn--outline" href="https://newsletter.newlifecapitalpartners.com" target="_blank" rel="noopener">
+            Read the full archive →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== BOTTOM CTA ========================= -->
+    <section class="sub-cta">
+      <div class="sub-cta__inner">
+        <span class="label">Join the Insider</span>
+        <h2>Start building<br><em>your future</em> today.</h2>
+        <p>
+          Free weekly real estate intelligence written specifically for first
+          responders and veterans. No fluff — just strategy you can act on.
+        </p>
+
+        <form class="sub-form" id="subFormBottom" action="https://newsletter.newlifecapitalpartners.com/subscribe" method="GET" target="_blank" style="margin-bottom:1.1rem;">
+          <input
+            type="email"
+            name="email"
+            id="subEmailBottom"
+            placeholder="Your email address"
+            autocomplete="email"
+            required
+            aria-label="Email address"
+          />
+          <button class="btn btn--primary" type="submit">Subscribe Free</button>
+        </form>
+        <p class="sub-hero__fine">
+          Free forever. Unsubscribe anytime.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================== FOOTER ========================== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="/" aria-label="New Life Capital Partners home">
+            <img class="footer__logo" src="/assets/logos/nlcp-logo.png" alt="New Life Capital Partners" />
+          </a>
+          <div class="footer__tagline">Real Estate Capital &amp; Operations</div>
+          <p>
+            The parent company of a growing ecosystem of real estate businesses —
+            built for transformation, renewal, and long-term value.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="/about/">About</a>
+          <a href="/companies/">Our Companies</a>
+          <a href="/#what">What We Do</a>
+          <a href="/insights/">Insights</a>
+        </div>
+        <div class="footer__col">
+          <h4>Ecosystem</h4>
+          <a href="https://www.highhopeshomebuyers.com" target="_blank" rel="noopener">High Hopes Home Buyers</a>
+          <a href="https://www.newerapm.com" target="_blank" rel="noopener">Newera Property Management</a>
+          <a href="/contact/">Partner Inquiry</a>
+        </div>
+        <div class="footer__col">
+          <h4>Newsletter</h4>
+          <a href="/subscribe/">Subscribe Free</a>
+          <a href="https://newsletter.newlifecapitalpartners.com" target="_blank" rel="noopener">New Life Insider</a>
+          <a href="/contact/">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; <span id="year"></span> New Life Capital Partners. All rights reserved.</span>
+        <span><a href="/privacy/">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms/">Terms of Use</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    // Sync email between top and bottom forms for UX continuity
+    const topEmail = document.getElementById('subEmail');
+    const botEmail = document.getElementById('subEmailBottom');
+    if (topEmail && botEmail) {
+      topEmail.addEventListener('input', () => { botEmail.value = topEmail.value; });
+      botEmail.addEventListener('input', () => { topEmail.value = botEmail.value; });
+    }
+  </script>
+</body>
+</html>

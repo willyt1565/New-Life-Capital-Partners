@@ -1,6 +1,6 @@
 ╔════════════════════════════════════════════════════════════╗
   BEEHIIV UPLOAD — NEW ARTICLE 2 OF 3
-  Shift Wealth Newsletter — Send as newsletter ✅
+  New Life Insider Newsletter — Send as newsletter ✅
 ╚════════════════════════════════════════════════════════════╝
 
 ┌─ FIELDS ────────────────────────────────────────────────────┐

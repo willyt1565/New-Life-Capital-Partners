@@ -1,6 +1,6 @@
 ╔════════════════════════════════════════════════════════════╗
   BEEHIIV UPLOAD — NEW ARTICLE 1 OF 3
-  Shift Wealth Newsletter — Send as newsletter ✅
+  New Life Insider Newsletter — Send as newsletter ✅
 ╚════════════════════════════════════════════════════════════╝
 
 ┌─ FIELDS ────────────────────────────────────────────────────┐
@@ -45,7 +45,7 @@ Here's what nobody told you: the pension is a foundation — not a finish line.
 
 The men and women who wear a badge, drive an engine, or serve in uniform are some of the most disciplined, mission-focused people in the country. Those same qualities that make you exceptional in the field make you a natural at real estate investing. You just haven't been shown how.
 
-That's exactly what Shift Wealth is here to fix.
+That's exactly what New Life Insider is here to fix.
 
 
 ▶ H2 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -163,7 +163,7 @@ The best time to start was ten years ago. The second-best time is now.
 
 
 ▶ H2 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-What's Coming in Shift Wealth
+What's Coming in New Life Insider
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Every issue of this newsletter is written for people who serve. We're not going to bury you in theory — we're going to give you practical, actionable education you can use.
@@ -179,7 +179,7 @@ Coming up:
 
 Real estate isn't reserved for wealthy investors with insider connections. It's a tool — and like any tool, once you know how to use it, it changes what you're capable of building.
 
-Welcome to Shift Wealth. Let's get to work.
+Welcome to New Life Insider. Let's get to work.
 
 
 — Thomas Lawhun, New Life Capital Partners
